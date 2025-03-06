@@ -1,5 +1,12 @@
 #include "../../includes/cub3d.h"
 
+int is_allowed_char(char c)
+{
+  if(c == ' ' || c == '0' || c == 'N' || c == 'E' || c == 'S' || c == 'W' || c == 'D')
+    return (1);
+  return (0);
+}
+
 void	init_ptr(t_all **all)
 {
 	int	i;
@@ -25,3 +32,4 @@ void	init_ptr(t_all **all)
 	while (++i < NB_TEXT)
 		(*all)->tab_textures[i] = NULL;
 }
+

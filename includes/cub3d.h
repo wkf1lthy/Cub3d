@@ -116,7 +116,7 @@ void init_player_position(t_all **all);
 void fill_tab(t_all **all, char *filename);
 void check_file(t_all *all);
 void	init_ptr(t_all **all);
-
+int is_allowed_char(char c);
 
 
 #endif
