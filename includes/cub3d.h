@@ -7,6 +7,7 @@
 #include "MLX42/include/MLX42/MLX42.h"
 #include <fcntl.h>
 #include "libft/libft.h"
+#include <ctype.h>
 
 #define NB_TEXT 5
 typedef struct s_coord
@@ -117,6 +118,9 @@ void fill_tab(t_all **all, char *filename);
 void check_file(t_all *all);
 void	init_ptr(t_all **all);
 int is_allowed_char(char c);
-
+int only_spaces(char *str);
+void exit_error(char *str);
+void ft_all_exit(t_all *all, char *str);
+void free_tab(char **tab);
 
 #endif
