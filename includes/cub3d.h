@@ -122,5 +122,7 @@ int only_spaces(char *str);
 void exit_error(char *str);
 void ft_all_exit(t_all *all, char *str);
 void free_tab(char **tab);
+int check_format(char *str, char *cmp);
+void free_all(t_all *all);
 
 #endif

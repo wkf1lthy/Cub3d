@@ -12,17 +12,17 @@ void check_file(t_all *all){
       int info_count;
 
       if(!all || !all->infos)
-           ft_all_exit(*all, "Missing file infos");
+           ft_all_exit(all, "Missing file infos");
       info_count = 0;
       i = 0;
       while((*all).infos[i]){
         if(is_info_valid(all, (*all).infos[i]))
-             ft_all_exit(*all, "Missing map infos");
+             ft_all_exit(all, "Missing map infos");
           info_count++;
           i++;
       }
       if(info_count != NB_TEXT + 2)
-        ft_all_exit(*all, "Incorect number of map details");
+        ft_all_exit(all, "Incorect number of map details");
 
       check_valid_map(all);
 

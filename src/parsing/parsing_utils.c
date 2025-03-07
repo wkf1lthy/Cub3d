@@ -33,3 +33,14 @@ void	init_ptr(t_all **all)
 		(*all)->tab_textures[i] = NULL;
 }
 
+int check_format(char *str, char *cmp)
+{
+  int i;
+  int j;
+
+  while(str[i] && ft_strcmp(&str[i], cmp) != 0)
+    	i++;
+  if(ft_strcmp(&str[i], cmp) == 0)
+    return (0);
+  return (1);
+}
