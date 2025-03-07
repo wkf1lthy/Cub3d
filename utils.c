@@ -27,7 +27,7 @@ int only_spaces(char *str)
 	int i = 0;
   	while(str[i] && str[i] != '\n')
 	{
-		if(!isspace((unsigned char)str[i]))
+		if(!ft_isspace((unsigned char)str[i]))
 			return(1);
        	i++;
 	}

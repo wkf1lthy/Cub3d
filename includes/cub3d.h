@@ -8,7 +8,10 @@
 #include <fcntl.h>
 #include "libft/libft.h"
 #include <ctype.h>
+#include <string.h>
 
+
+#define NULL ((void *)0)
 #define NB_TEXT 5
 typedef struct s_coord
 {
@@ -124,5 +127,12 @@ void ft_all_exit(t_all *all, char *str);
 void free_tab(char **tab);
 int check_format(char *str, char *cmp);
 void free_all(t_all *all);
+void	update_count(t_all **all, char *id);
+int valid_path(char *path, t_all **all, int index);
+int id_line(char *line, t_all **all, int i);
+int get_line(char *line);
+int is_info_valid(t_all **all, char *line);
+int	ft_isspace(char c);
+int	is_map_closed(char **map);
 
 #endif
