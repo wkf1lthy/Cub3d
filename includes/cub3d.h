@@ -15,7 +15,7 @@
 #define NB_TEXT 5
 typedef struct s_coord
 {
-	double			x;
+	double x;
 	double			y;
 }					t_coord;
 

@@ -15,11 +15,11 @@ LIBFT_CFLAGS = -fPIC
 MLX_DIR = $(INCLUDES)MLX42/
 MLX 	= $(MLX_DIR)build/libmlx42.a
 
-PARSING_DIR  = parsing/
-PARSING		 = parsing_utils  parsing main
+RENDER_DIR = raycasting/
+RENDER = raycaster
 
 
-SRC_FILES  += 
+SRC_FILES  +=
 SRC_FILES  += $(addprefix $(PARSING_DIR), $(PARSING))
 SRC_FILES  += $(addprefix $(RENDER_DIR), $(RENDER))
 SRC_FILES  += $(addprefix $(PLAYER_DIR), $(PLAYER))
