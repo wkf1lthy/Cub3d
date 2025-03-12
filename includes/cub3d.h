@@ -9,6 +9,7 @@
 #include "libft/libft.h"
 #include <ctype.h>
 #include <string.h>
+#include <stdbool.h>
 
 
 #define NULL ((void *)0)
@@ -118,7 +119,7 @@ void check_args(int ac, char **av);
 void parsing(t_all **all, int ac, char **av);
 void init_player_position(t_all **all);
 void fill_tab(t_all **all, char *filename);
-void check_file(t_all *all);
+void check_file(t_all **all);
 void	init_ptr(t_all **all);
 int is_allowed_char(char c);
 int only_spaces(char *str);
@@ -134,5 +135,12 @@ int get_line(char *line);
 int is_info_valid(t_all **all, char *line);
 int	ft_isspace(char c);
 int	is_map_closed(char **map);
+int forbidden_char(char **map);
+int is_border(int i, int j, int height, int len);
+int is_invalid_space(char **map, int i, int j, int height);
+int	is_line_map(t_all *all, char *line, int fd);
+char  **add_line(char **map, char *line);
+void check_map_valid(t_all **all);
+void	adding_line(t_all **all, int fd, int flag);
 
 #endif

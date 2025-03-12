@@ -7,44 +7,40 @@ void check_args(int ac, char **av){
         exit_error("wrong format");   
 }
 
-void check_file(t_all *all){
+void check_file(t_all **all){
       int i;
       int info_count;
 
-      if(!all || !all->infos)
-           ft_all_exit(all, "Missing file infos");
+      if(!all || !(*all)->infos)
+           ft_all_exit(*all, "Missing file infos");
       info_count = 0;
       i = 0;
-      while((*all).infos[i]){
-        if(is_info_valid(all, (*all).infos[i]))
-             ft_all_exit(all, "Missing map infos");
+      while((*all)->infos[i]){
+        if(is_info_valid(all, (*all)->infos[i]))
+             ft_all_exit(*all, "Missing map infos");
           info_count++;
           i++;
       }
       if(info_count != NB_TEXT + 2)
-        ft_all_exit(all, "Incorect number of map details");
+        ft_all_exit(*all, "Incorect number of map details");
 
-      check_valid_map(all);
+      check_map_valid(all);
 
   }
 
- void fill_tab(t_all **all, char *filename){
-   int fd;
-   char *line;
+void fill_tab(t_all **all, char *filename)
+{
+  int		fd;
+  int		flag;
 
-   fd = open(filename, O_RDONLY);
-   if(fd == -1)
-     ft_all_exit(*all, "Error opening file");
-   while((line = get_next_line(fd))){
-     if(!adding_line(all, line)){
-       free(line);
-       close(fd);
-       ft_all_exit(*all, "Error: Failed to process map line");
-     }
-     free(line);
-   }
-   close(fd);
- }
+	fd = open(filename, O_RDONLY);
+	if (fd == -1)
+		ft_all_exit(*all, "File could not be opened");
+	flag = 0;
+	adding_line(all, fd, flag);
+	close(fd);
+}
+
 
 void init_player_position(t_all **all)
 {
@@ -75,6 +71,6 @@ void parsing(t_all **all, int ac, char **av){
     check_args(ac, av);
     init_ptr(all);
     fill_tab(all, av[1]);
-    check_file(*all);
+    check_file(all);
     init_player_position(all);
   }
