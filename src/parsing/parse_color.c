@@ -50,10 +50,14 @@ int setting_color(char *line)
   {
     while(line[i] && line[i] == ' ')
       	i++;
-    if(!ft_isdigit(line[i]) && line[i] != ' ')
-      	return(0);
-   	if(ft_atoi(&line[i]) > 255 && line[i] != ' ')
-          return(0);
+	  if (!ft_isdigit(line[i]) && line[i] != ' ')
+	  {
+		  return (0);
+	  }
+	  if (ft_atoi(&line[i]) > 255 && line[i] != ' ')
+	  {
+		  return (0);
+	  }
   	while (ft_isdigit(line[i]) || line[i] == ' ')
   		i++;
   	if (line[i] != ',' && flag < 2)

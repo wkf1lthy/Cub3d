@@ -26,10 +26,11 @@ void	adding_line(t_all **all, int fd, int flag)
       break ;
     if (is_line_map(*all, line, fd))
     {
-      if (!only_spaces(line))
+      if (only_spaces(line))
         flag = 1;
       if (flag && line[0] != '\n')
       {
+        printf("dd\n");
         (*all)->map = add_line((*all)->map, line);
       }
     }
