@@ -1,4 +1,4 @@
-#include "includes/cub3d.h"
+#include "../includes/cub3d.h"
 
 void ft_all_exit(t_all *all, char *str)
 {

@@ -132,7 +132,7 @@ void	update_count(t_all **all, char *id);
 int valid_path(char *path, t_all **all, int index);
 int id_line(char *line, t_all **all, int i);
 int get_line(char *line);
-int is_info_valid(t_all **all, char *line);
+void is_info_valid(t_all **all, char *line);
 int	ft_isspace(char c);
 int	is_map_closed(char **map);
 int forbidden_char(char **map);
@@ -142,5 +142,10 @@ int	is_line_map(t_all *all, char *line, int fd);
 char  **add_line(char **map, char *line);
 void check_map_valid(t_all **all);
 void	adding_line(t_all **all, int fd, int flag);
+int setting_color(char *line);
+int valid_number(char *str);
+void	update_color(t_all **all, char *color, char id);
+void is_valid_color(t_all **all, char *line);
+int setting_color(char *line);
 
 #endif

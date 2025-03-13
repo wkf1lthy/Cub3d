@@ -7,26 +7,18 @@ void check_args(int ac, char **av){
         exit_error("wrong format");   
 }
 
-void check_file(t_all **all){
-      int i;
-      int info_count;
+void	check_file(t_all **all)
+{
+	int	size;
 
-      if(!all || !(*all)->infos)
-           ft_all_exit(*all, "Missing file infos");
-      info_count = 0;
-      i = 0;
-      while((*all)->infos[i]){
-        if(is_info_valid(all, (*all)->infos[i]))
-             ft_all_exit(*all, "Missing map infos");
-          info_count++;
-          i++;
-      }
-      if(info_count != NB_TEXT + 2)
-        ft_all_exit(*all, "Incorect number of map details");
+	check_map_valid(all);
+	size = -1;
+	while ((*all)->infos && (*all)->infos[++size])
+		is_info_valid(all, (*all)->infos[size]);
+	if (size != NB_TEXT + 2)
+		ft_all_exit(*all, "Wrong number of informations");
+}
 
-      check_map_valid(all);
-
-  }
 
 void fill_tab(t_all **all, char *filename)
 {

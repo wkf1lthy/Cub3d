@@ -16,10 +16,10 @@ MLX_DIR = $(INCLUDES)MLX42/
 MLX 	= $(MLX_DIR)build/libmlx42.a
 
 PARSING_DIR  = parsing/
-PARSING		 = parsing_utils  parsing main parsing_utils2 map_check path
+PARSING		 = parsing_utils  parsing main parsing_utils2 map_check path parse_color
 
 
-SRC_FILES  += 
+SRC_FILES  += utils
 SRC_FILES  += $(addprefix $(PARSING_DIR), $(PARSING))
 SRC_FILES  += $(addprefix $(RENDER_DIR), $(RENDER))
 SRC_FILES  += $(addprefix $(PLAYER_DIR), $(PLAYER))

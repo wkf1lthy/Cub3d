@@ -86,7 +86,7 @@ int get_line(char *line)
   return(-1);
 }
 
-int is_info_valid(t_all **all, char *line)
+void is_info_valid(t_all **all, char *line)
 {
   int i;
 
