@@ -25,12 +25,13 @@
     <list default="true" id="6ae8926c-de72-4a8c-b23f-75de9525f4f5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cub3d" beforeDir="false" afterPath="$PROJECT_DIR$/cub3d" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/includes/cub3d.h" beforeDir="false" afterPath="$PROJECT_DIR$/includes/cub3d.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parsing/main.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parsing/map_check.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parsing/parsing.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parsing/parsing_utils.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parsing/path.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/libft/ft_bzero.c" beforeDir="false" afterPath="$PROJECT_DIR$/includes/libft/ft_bzero.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/libft/ft_bzero.o" beforeDir="false" afterPath="$PROJECT_DIR$/includes/libft/ft_bzero.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/libft/libft.a" beforeDir="false" afterPath="$PROJECT_DIR$/includes/libft/libft.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/raycasting/raycaster.o" beforeDir="false" afterPath="$PROJECT_DIR$/obj/raycasting/raycaster.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/raycasting/raycaster.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/raycasting/raycaster.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,6 +72,7 @@
     &quot;C/C++ File.raycaster.c.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
@@ -133,11 +135,11 @@
     <list>
       <item itemvalue="C/C++ File.raycaster.c" />
       <item itemvalue="Native Application.all" />
-      <item itemvalue="Native Application.fclean" />
-      <item itemvalue="Native Application.re" />
       <item itemvalue="Native Application.cub3d" />
+      <item itemvalue="Native Application.fclean" />
       <item itemvalue="Native Application.mlx" />
       <item itemvalue="Native Application.mlx_clean" />
+      <item itemvalue="Native Application.re" />
     </list>
     <recent_temporary>
       <list>
@@ -158,7 +160,11 @@
       <workItem from="1741599922094" duration="2651000" />
       <workItem from="1741603553779" duration="4713000" />
       <workItem from="1741616876388" duration="964000" />
-      <workItem from="1741618654023" duration="6274000" />
+      <workItem from="1741618654023" duration="6957000" />
+      <workItem from="1741710609738" duration="2463000" />
+      <workItem from="1741778623206" duration="18000" />
+      <workItem from="1741783952624" duration="17932000" />
+      <workItem from="1741867834348" duration="5750000" />
     </task>
     <servers />
   </component>

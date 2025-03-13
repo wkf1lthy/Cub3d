@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdio.h>
+#include <math.h>
 #include "MLX42/include/MLX42/MLX42.h"
 #include <fcntl.h>
 #include "libft/libft.h"
@@ -37,9 +38,7 @@ typedef struct s_dda
 	t_coord			ray_dir;
 	t_coord			side_dist;
 	t_coord			delta_dist;
-	t_coord			step;
 	t_coord_int		map;
-	int				hit;
 	int				side;
 }					t_dda;
 
@@ -57,18 +56,13 @@ typedef struct s_flash_light
 
 typedef struct s_raycast
 {
-	t_coord			pos_ray;
-	double			distance;
 	int				wall_height;
-	double			fish_eye;
-	double			projected_wall_height;
 	int				y_start;
 	int				y_end;
 	t_coord_int		texture_coord;
 	int				tex_index;
 	uint8_t			*pixel;
 	int				color;
-	int				hit_vertical;
 	int				step_x;
 	int				step_y;
 	double			perp_wall_dist;
@@ -134,5 +128,19 @@ int get_line(char *line);
 int is_info_valid(t_all **all, char *line);
 int	ft_isspace(char c);
 int	is_map_closed(char **map);
+
+void	calcul_tex(t_all *all, t_raycast *ray, int y);
+void draw_wall(t_all *all, t_raycast *ray, int x);
+void init_ray(t_all *all, t_raycast *ray, double ray_angle);
+void cast_ray(t_all *all, t_raycast *ray, double ray_angle);
+void ray_cast(void *al);
+void escape(void *all);
+void	check_wall_face(t_raycast *raycast);
+int main();
+void	calculate_color(mlx_texture_t **texture_tab, t_raycast *raycast);
+void choice_move(void *al);
+void	refresh_image(mlx_t *mlx, mlx_image_t **image);
+void	fov_mooves(void *param);
+
 
 #endif
