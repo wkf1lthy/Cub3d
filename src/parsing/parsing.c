@@ -63,6 +63,8 @@ void parsing(t_all **all, int ac, char **av){
     check_args(ac, av);
     init_ptr(all);
     fill_tab(all, av[1]);
+    for(int i = 0; (*all)->map[i]; i++)
+      printf("%s\n", (*all)->map[i]);
     check_file(all);
     init_player_position(all);
   }

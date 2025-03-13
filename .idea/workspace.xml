@@ -32,14 +32,10 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1b6d972-4690-45e3-abb0-2be874db18ee" name="Changes" comment="update n creation of utils2">
-      <change afterPath="$PROJECT_DIR$/src/parsing/parse_color.c" afterDir="false" />
+    <list default="true" id="c1b6d972-4690-45e3-abb0-2be874db18ee" name="Changes" comment="finish parsing">
+      <change afterPath="$PROJECT_DIR$/map/map.cub" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/cub3d.h" beforeDir="false" afterPath="$PROJECT_DIR$/includes/cub3d.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/parsing/parsing.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/parsing/parsing.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parsing/path.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/parsing/path.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,6 +117,11 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
+  </component>
   <component name="RunManager" selected="Native Application.cub3D">
     <configuration name="all" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Cub3D" TARGET_NAME="all" CONFIG_NAME="all" version="1">
       <method v="2">
@@ -198,7 +199,7 @@
       <workItem from="1741362619026" duration="58000" />
       <workItem from="1741362683325" duration="8560000" />
       <workItem from="1741707179924" duration="6425000" />
-      <workItem from="1741878777870" duration="2794000" />
+      <workItem from="1741878777870" duration="3741000" />
     </task>
     <task id="LOCAL-00001" summary="update n creation of utils2">
       <option name="closed" value="true" />
@@ -208,7 +209,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741748464371</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="finish parsing">
+      <option name="closed" value="true" />
+      <created>1741881590710</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1741881590710</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -216,7 +225,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="update n creation of utils2" />
-    <option name="LAST_COMMIT_MESSAGE" value="update n creation of utils2" />
+    <MESSAGE value="finish parsing" />
+    <option name="LAST_COMMIT_MESSAGE" value="finish parsing" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
