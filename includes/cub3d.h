@@ -10,6 +10,7 @@
 #include <ctype.h>
 #include <string.h>
 #include <stdbool.h>
+#include <sys/types.h>
 
 
 #define NULL ((void *)0)
@@ -147,5 +148,6 @@ int valid_number(char *str);
 void	update_color(t_all **all, char *color, char id);
 void is_valid_color(t_all **all, char *line);
 int setting_color(char *line);
+char	*ft_strstr(const char *str1, const char *str2);
 
 #endif

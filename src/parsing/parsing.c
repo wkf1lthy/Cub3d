@@ -14,8 +14,10 @@ void	check_file(t_all **all)
 	check_map_valid(all);
 	size = -1;
 	while ((*all)->infos && (*all)->infos[++size])
-		is_info_valid(all, (*all)->infos[size]);
-	if (size != NB_TEXT + 2)
+    {
+          is_info_valid(all, (*all)->infos[size]);
+    }
+	if (size != NB_TEXT + 1)
 		ft_all_exit(*all, "Wrong number of informations");
 }
 
@@ -63,8 +65,6 @@ void parsing(t_all **all, int ac, char **av){
     check_args(ac, av);
     init_ptr(all);
     fill_tab(all, av[1]);
-    for(int i = 0; (*all)->map[i]; i++)
-      printf("%s\n", (*all)->map[i]);
     check_file(all);
     init_player_position(all);
   }

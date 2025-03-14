@@ -60,15 +60,17 @@ int check_start_pos(char **map)
   int start_pos;
 
   start_pos = 0;
-  i = -1;
-  while(map[i++])
+  i = 0;
+  while(map[i])
   {
-    j = -1;
-    while(map[i][j++])
+    j = 0;
+    while(map[i][j])
     {
       if(map[i][j] == 'N' || map[i][j] == 'S' || map[i][j] == 'W' || map[i][j] == 'E')
         start_pos++;
+      j++;
     }
+    i++;
   }
   return(start_pos == 1);
 }

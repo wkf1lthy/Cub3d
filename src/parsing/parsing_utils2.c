@@ -10,9 +10,10 @@ int is_invalid_space(char **map, int i, int j, int height)
   int len;
 
   len = ft_strlen(map[i]);
-  return ((j > 0 && ft_isspace(map[i][j - 1])) || (j < len - 1
-      && ft_isspace(map[i][j + 1])) || (i > 0 && ft_isspace(map[i
-        - 1][j])) || (i < height - 1 && ft_isspace(map[i + 1][j])));
+  return ((j > 0 && j < len && ft_isspace(map[i][j - 1])) ||
+       (j < len - 1 && ft_isspace(map[i][j + 1])) ||
+       (i > 0 && j < (int)ft_strlen(map[i - 1]) && ft_isspace(map[i - 1][j])) ||
+       (i < height - 1 && j < (int)ft_strlen(map[i + 1]) && ft_isspace(map[i + 1][j])));
 }
 
 void	adding_line(t_all **all, int fd, int flag)
@@ -30,7 +31,6 @@ void	adding_line(t_all **all, int fd, int flag)
         flag = 1;
       if (flag && line[0] != '\n')
       {
-        printf("dd\n");
         (*all)->map = add_line((*all)->map, line);
       }
     }
