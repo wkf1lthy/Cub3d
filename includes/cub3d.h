@@ -14,6 +14,10 @@
 
 #define NULL ((void *)0)
 #define NB_TEXT 5
+#define TILE_SIZE 64
+#define WIDTH 1000
+#define HEIGHT 800
+
 typedef struct s_coord
 {
 	double x;
@@ -141,6 +145,7 @@ void	calculate_color(mlx_texture_t **texture_tab, t_raycast *raycast);
 void choice_move(void *al);
 void	refresh_image(mlx_t *mlx, mlx_image_t **image);
 void	fov_mooves(void *param);
+void draw_minimap(t_all *all);
 
 
 #endif

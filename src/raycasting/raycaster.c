@@ -3,10 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define PI 3.141592654
 #define FOV (66 * (M_PI / 180))
-#define TILE_SIZE 64
-
 
 // Map
 char *map[] = {
@@ -20,20 +17,15 @@ char *map[] = {
 		"1111111111"
 };
 
-
-// Screen dimensions
-int s_width = 1000;
-int s_height = 800;
-
 void	refresh_image(mlx_t *mlx, mlx_image_t **image)
 {
 	if (!*image)
 	{
-		*image = mlx_new_image(mlx, s_width, s_height);
+		*image = mlx_new_image(mlx, WIDTH, HEIGHT);
 		mlx_image_to_window(mlx, *image, 0, 0);
 	}
 	else
-		ft_bzero((*image)->pixels, s_width * s_height * 4);
+		ft_bzero((*image)->pixels, WIDTH * HEIGHT);
 }
 
 
@@ -70,7 +62,7 @@ void init_ray(t_all *all, t_raycast *ray, double ray_angle)
 
 void draw_wall(t_all *all, t_raycast *ray, int x)
 {
-	for (int y = 0; y < s_height; y++)
+	for (int y = 0; y < HEIGHT; y++)
 	{
 		if (y < ray->y_start)
 			mlx_put_pixel(all->wall_img, x, y, all->color_c);
@@ -117,22 +109,23 @@ void ray_cast(void *al)
 	t_raycast ray;
 	refresh_image(all->mlx, &all->wall_img);
 
-	for (int x = 0; x < s_width; x++)
+	for (int x = 0; x < WIDTH; x++)
 	{
-		double ray_angle = all->player_angle - (FOV / 2) + ((FOV * x) / s_width);
+		double ray_angle = all->player_angle - (FOV / 2) + ((FOV * x) / WIDTH);
 		cast_ray(all, &ray, ray_angle);
 		double distance = ray.perp_wall_dist * cos(ray_angle - all->player_angle);
 
 		// Calcul hauteur mur
-		ray.wall_height = (int)(TILE_SIZE * s_height / distance);
+		ray.wall_height = (int)(TILE_SIZE * HEIGHT / distance);
 
 		// Calcul limites d’affichage du mur
-		ray.y_start = (s_height / 2) - (ray.wall_height / 2);
-		ray.y_end = (s_height / 2) + (ray.wall_height / 2);
+		ray.y_start = (HEIGHT / 2) - (ray.wall_height / 2);
+		ray.y_end = (HEIGHT / 2) + (ray.wall_height / 2);
 		// Affichage du mur avec une couleur fixe (ex. rouge)
 		draw_wall(all, &ray, x);
 	}
 	mlx_image_to_window(all->mlx, all->wall_img, 0, 0);
+	draw_minimap(all);
 }
 
 void escape(void *al)
@@ -144,63 +137,9 @@ void escape(void *al)
 	}
 }
 
-void	check_wall_face(t_raycast *raycast)
-{
-	if (raycast->dda.side == 0)
-	{
-		if (raycast->dda.ray_dir.x < 0)
-			raycast->wall_face = 0;
-		else
-			raycast->wall_face = 1;
-	}
-	else
-	{
-		if (raycast->dda.ray_dir.y < 0)
-			raycast->wall_face = 2;
-		else
-			raycast->wall_face = 3;
-	}
-}
-
-void	calcul_tex(t_all *all, t_raycast *ray, int y)
-{
-	double	wall_x;
-
-	if (ray->dda.side == 0)
-		wall_x = (all->player_pos.y + ray->perp_wall_dist
-									  * ray->dda.ray_dir.y) / TILE_SIZE;
-	else
-		wall_x = (all->player_pos.x + ray->perp_wall_dist
-									  * ray->dda.ray_dir.x) / TILE_SIZE;
-	wall_x -= floor(wall_x);
-	ray->texture_coord.x = (int)(wall_x
-									 * (double)all->tab_textures[ray->wall_face]->width);
-	ray->texture_coord.y = ((y - ray->y_start)
-								* all->tab_textures[ray->wall_face]->height
-								/ ray->wall_height);
-	if (ray->texture_coord.y
-		>= (int)all->tab_textures[ray->wall_face]->height)
-	{
-		ray->texture_coord.y
-				= (int) all->tab_textures[ray->wall_face]->height - 1;
-	}
-}
-
-void	calculate_color(mlx_texture_t **texture_tab, t_raycast *raycast)
-{
-	raycast->tex_index = ((((int)raycast->texture_coord.y
-							* (int)texture_tab[raycast->wall_face]->width
-							+ (int)raycast->texture_coord.x)
-						  ) * texture_tab[raycast->wall_face]->bytes_per_pixel);
-	raycast->pixel
-			= &texture_tab[raycast->wall_face]->pixels[raycast->tex_index];
-	raycast->color = (raycast->pixel[0] << 24) | (raycast->pixel[1] << 16)
-					 | (raycast->pixel[2] << 8) | raycast->pixel[3];
-}
-
 int main()
 {
-	void *mlx = mlx_init(s_width, s_height, "Cub3D", 0);
+	void *mlx = mlx_init(WIDTH, HEIGHT, "Cub3D", 0);
 	t_all *all;
 	all = malloc(sizeof(t_all) * 1);
 	all->map = map;
@@ -212,9 +151,10 @@ int main()
 	all->player_pos.y = 2.5 * TILE_SIZE;
 	all->player_angle = M_PI / 2; // Angle in degrees
 	all->mlx = mlx;
-	all->color_f = 10000;
+	all->color_f = -10000;
 	all->color_c = 10000;
-	all->wall_img = mlx_new_image(all->mlx, s_width, s_height);
+	all->wall_img = mlx_new_image(all->mlx, WIDTH, HEIGHT);
+	all->minimap_img = mlx_new_image(all->mlx, WIDTH, HEIGHT);
 	if (!mlx)
 		return 1;
 

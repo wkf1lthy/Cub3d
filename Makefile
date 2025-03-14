@@ -19,7 +19,7 @@ MLX 	= $(MLX_DIR)build/libmlx42.a
 PLAYER_DIR = player/
 PLAYER = move move_fov
 RENDER_DIR = raycasting/
-RENDER = raycaster
+RENDER = raycaster textures minimap
 
 
 SRC_FILES  +=

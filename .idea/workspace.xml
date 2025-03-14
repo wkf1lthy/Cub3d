@@ -25,13 +25,9 @@
     <list default="true" id="6ae8926c-de72-4a8c-b23f-75de9525f4f5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cub3d" beforeDir="false" afterPath="$PROJECT_DIR$/cub3d" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/includes/cub3d.h" beforeDir="false" afterPath="$PROJECT_DIR$/includes/cub3d.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/libft/ft_bzero.c" beforeDir="false" afterPath="$PROJECT_DIR$/includes/libft/ft_bzero.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/libft/ft_bzero.o" beforeDir="false" afterPath="$PROJECT_DIR$/includes/libft/ft_bzero.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/libft/libft.a" beforeDir="false" afterPath="$PROJECT_DIR$/includes/libft/libft.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/raycasting/raycaster.o" beforeDir="false" afterPath="$PROJECT_DIR$/obj/raycasting/raycaster.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/raycasting/raycaster.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/raycasting/raycaster.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/raycasting/textures.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/raycasting/textures.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,6 +161,8 @@
       <workItem from="1741778623206" duration="18000" />
       <workItem from="1741783952624" duration="17932000" />
       <workItem from="1741867834348" duration="5750000" />
+      <workItem from="1741948254833" duration="5336000" />
+      <workItem from="1741965321066" duration="3959000" />
     </task>
     <servers />
   </component>
