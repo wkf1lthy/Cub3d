@@ -2,30 +2,30 @@
 
 int is_allowed_char(char c)
 {
-  if(c == ' ' || c == '0' || c == 'N' || c == 'E' || c == 'S' || c == 'W' || c == 'D')
-    return (1);
-  return (0);
+	if(c == ' ' || c == '0' || c == 'N' || c == 'E' || c == 'S' || c == 'W' || c == 'D')
+		return (1);
+	return (0);
 }
 
 char  **add_line(char **map, char *line)
 {
-  char **new_map;
-  int size;
-  int i;
+	char **new_map;
+	int size;
+	int i;
 
-  size = 0;
-  while(map && map[size])
-    size++;
-  new_map = ft_calloc(size + 2, sizeof(char *));
-  if(!new_map)
-    return (NULL);
-  i = -1;
-  while(++i < size)
-    new_map[i] = ft_strdup(map[i]);
-  new_map[i++] = ft_strdup(line);
-  new_map[i] = NULL;
-  free_tab(map);
-  return (new_map);
+	size = 0;
+	while(map && map[size])
+		size++;
+	new_map = ft_calloc(size + 2, sizeof(char *));
+	if(!new_map)
+		return (NULL);
+	i = -1;
+	while(++i < size)
+		new_map[i] = ft_strdup(map[i]);
+	new_map[i++] = ft_strdup(line);
+	new_map[i] = NULL;
+	free_tab(map);
+	return (new_map);
 }
 
 int	is_line_map(t_all *all, char *line, int fd)
@@ -84,12 +84,12 @@ void	init_ptr(t_all **all)
 
 int check_format(char *str, char *cmp)
 {
-  int i;
+	int i;
 
-  i = 0;
-  while(str[i] && ft_strcmp(&str[i], cmp) != 0)
-    	i++;
-  if(ft_strcmp(&str[i], cmp) == 0)
-    return (0);
-  return (1);
+	i = 0;
+	while(str[i] && ft_strcmp(&str[i], cmp) != 0)
+		i++;
+	if(ft_strcmp(&str[i], cmp) == 0)
+		return (0);
+	return (1);
 }

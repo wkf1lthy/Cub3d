@@ -17,6 +17,9 @@
 #define NULL ((void *)0)
 #define NB_TEXT 5
 #define TILE_SIZE 64
+#define WIDTH 1000
+#define HEIGHT 800
+#define FOV (66 * (M_PI / 180))
 
 typedef struct s_coord
 {
@@ -152,5 +155,29 @@ void	update_color(t_all **all, char *color, char id);
 void is_valid_color(t_all **all, char *line);
 int setting_color(char *line);
 char	*ft_strstr(const char *str1, const char *str2);
+
+void	move_forward(t_all *all);
+void	move_backward(t_all *all);
+void	move_left(t_all *all);
+void	move_right(t_all *all);
+void choice_move(void *param);
+void rotate_right(t_all *all);
+void	rotate_left(t_all *all);
+void	fov_mooves(void *param);
+
+uint32_t choose_color(char c);
+void player_on_minimap(t_all *all);
+void	draw_minimap(t_all *all);
+void	refresh_image(mlx_t *mlx, mlx_image_t **image);
+void init_ray(t_all *all, t_raycast *ray, double ray_angle);
+void draw_wall(t_all *all, t_raycast *ray, int x);
+void dda(t_all *all, t_raycast *ray, double ray_angle);
+void ray_cast(void *param);
+void escape(void *param);
+void	check_wall_face(t_raycast *raycast);
+void	calcul_tex(t_all *all, t_raycast *ray, int y);
+void	calculate_color(mlx_texture_t **texture_tab, t_raycast *raycast);
+
+int main(int ac, char **av);
 
 #endif

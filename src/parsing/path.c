@@ -1,5 +1,4 @@
 #include "../../includes/cub3d.h"
-#include <fcntl.h>
 
 int	valid_path(char *path, t_all **all, int index)
 {
