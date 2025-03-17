@@ -11,10 +11,13 @@
 #include <string.h>
 #include <stdbool.h>
 #include <sys/types.h>
+#include <math.h>
 
 
 #define NULL ((void *)0)
 #define NB_TEXT 5
+#define TILE_SIZE 64
+
 typedef struct s_coord
 {
 	double			x;

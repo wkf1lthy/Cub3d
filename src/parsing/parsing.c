@@ -35,6 +35,21 @@ void fill_tab(t_all **all, char *filename)
 	close(fd);
 }
 
+void	init_player(t_all **all, int i, int j)
+{
+	(*all)->player_pos.x = (j + 0.5) * TILE_SIZE;
+	(*all)->player_pos.y = (i + 0.5) * TILE_SIZE;
+	(*all)->starting_dir = (*all)->map[i][j];
+	if ((*all)->map[i][j] == 'N')
+		(*all)->player_angle = 3 * M_PI / 2;
+	else if ((*all)->map[i][j] == 'E')
+		(*all)->player_angle = 0;
+	else if ((*all)->map[i][j] == 'S')
+		(*all)->player_angle = M_PI / 2;
+	else if ((*all)->map[i][j] == 'W')
+		(*all)->player_angle = M_PI;
+	(*all)->map[i][j] = '0';
+}
 
 void init_player_position(t_all **all)
 {
@@ -43,18 +58,18 @@ void init_player_position(t_all **all)
    int found;
 
    found = 0;
-   i = 0;
+   i = -1;
 
-   while((*all)->map[i])
+   while((*all)->map[++i])
    {
-     j = 0;
-     while((*all)->map[i][j])
+     j = -1;
+     while((*all)->map[i][++j])
      {
        if(ft_strchr("NESW", (*all)->map[i][j]))
        {
          if(found)
            ft_all_exit(*all, "Error multiple player positions found");
-         init_ptr(all);
+         init_player(all, i, j);
          found = 1;
        }
      }
