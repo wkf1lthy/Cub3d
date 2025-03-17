@@ -2,16 +2,13 @@
 
 void	refresh_image(mlx_t *mlx, mlx_image_t **image)
 {
-	if (*image)
-	{
-		mlx_delete_image(mlx, *image);
-		*image = NULL;
-	}
 	if (!*image)
 	{
 		*image = mlx_new_image(mlx, WIDTH, HEIGHT);
 		mlx_image_to_window(mlx, *image, 0, 0);
 	}
+	else
+		ft_bzero((*image)->pixels, WIDTH * HEIGHT * 4);
 }
 
 
@@ -65,7 +62,6 @@ void draw_wall(t_all *all, t_raycast *ray, int x)
 
 void dda(t_all *all, t_raycast *ray, double ray_angle)
 {
-	// DDA : avancer jusqu’à toucher un mur
 	init_ray(all, ray, ray_angle);
 	while (all->map[ray->dda.map.y][ray->dda.map.x] != '1')
 	{
@@ -106,7 +102,6 @@ void ray_cast(void *param)
 		ray.y_end = (HEIGHT / 2) + (ray.wall_height / 2);
 		draw_wall(all, &ray, x);
 	}
-	mlx_image_to_window(all->mlx, all->wall_img, 0, 0);
 	draw_minimap(all);
 }
 

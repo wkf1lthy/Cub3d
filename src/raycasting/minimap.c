@@ -3,9 +3,9 @@
 uint32_t choose_color(char c)
 {
 	if (c == '0')
-		return 600;
+		return 0x000000FF;
 	else if (c == '1')
-		return -599;
+		return 0xFFFFFFFF;
 	return 0;
 }
 
@@ -53,5 +53,4 @@ void	draw_minimap(t_all *all)
 		}
 	}
 	player_on_minimap(all);
-	mlx_image_to_window(all->mlx, all->minimap_img, 0, 0);
 }
