@@ -20,7 +20,7 @@ PARSING		 = parsing_utils parsing parsing_utils2 map_check path parse_color
 RENDER_DIR = raycasting/
 RENDER = minimap raycaster textures
 PLAYER_DIR = player/
-PLAYER = move move_fov
+PLAYER = move move_fov door
 
 
 SRC_FILES  += utils main

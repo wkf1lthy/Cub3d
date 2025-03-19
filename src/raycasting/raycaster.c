@@ -69,7 +69,8 @@ void	draw_wall(t_all *all, t_raycast *ray, int x)
 void	dda(t_all *all, t_raycast *ray, double ray_angle)
 {
 	init_ray(all, ray, ray_angle);
-	while (all->map[ray->dda.map.y][ray->dda.map.x] != '1')
+	while (all->map[ray->dda.map.y][ray->dda.map.x] != '1'
+		&& all->map[ray->dda.map.y][ray->dda.map.x] != 'D')
 	{
 		if (ray->dda.side_dist.x < ray->dda.side_dist.y)
 		{
@@ -85,6 +86,10 @@ void	dda(t_all *all, t_raycast *ray, double ray_angle)
 		}
 	}
 	check_wall_face(ray);
+    if (all->map[ray->dda.map.y][ray->dda.map.x] == 'D')
+    {
+        ray->wall_face = 4;
+    }
 	if (ray->dda.side == 0)
 		ray->perp_wall_dist = (ray->dda.side_dist.x - ray->dda.delta_dist.x);
 	else

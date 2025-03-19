@@ -17,7 +17,7 @@ void	check_file(t_all **all)
 	{
 		is_info_valid(all, (*all)->infos[size]);
 	}
-	if (size != NB_TEXT + 1)
+	if (size != NB_TEXT + 2)
 		ft_all_exit(*all, "Wrong number of informations");
 }
 

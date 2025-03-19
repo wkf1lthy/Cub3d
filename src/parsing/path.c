@@ -90,8 +90,10 @@ int	get_line(char *line)
 		return (2);
 	else if (line[i] == 'E')
 		return (3);
+    else if (line[i] == 'D')
+        return (4);
 	else
-		return (4);
+		return (5);
 }
 
 void	is_info_valid(t_all **all, char *line)
