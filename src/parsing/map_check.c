@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_check.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hbouchel <hbouchel@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/19 18:34:36 by hbouchel          #+#    #+#             */
+/*   Updated: 2025/03/19 18:36:33 by hbouchel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/cub3d.h"
 
 int	ft_isspace(char c)
@@ -9,80 +21,89 @@ int	ft_isspace(char c)
 
 int	is_map_closed(char **map)
 {
-	int	i;
-	int	j;
-	int	height;
-	int	len;
+	int		i;
+	int		height;
+	size_t	max_len;
+	size_t	len;
 
 	i = 0;
 	while (map[i])
 		i++;
 	height = i;
-	i = -1;
-	while (++i < height)
+	max_len = 0;
+	i = 0;
+	while (i < height)
 	{
 		len = ft_strlen(map[i]);
-		j = -1;
-		while (++j < len)
+		if (len > max_len)
+			max_len = len;
+		i++;
+	}
+	return (mapping(map, max_len, height));
+}
+
+int	mapping(char **map, size_t max_len, int height)
+{
+	int		i;
+	size_t	j;
+
+	i = 0;
+	while (++i < height)
+	{
+		j = 0;
+		while (++j < max_len)
 		{
-			if (!ft_isspace(map[i][j]) && ((is_border(i, j, height, len)
-											&& map[i][j] != '1') || (is_allowed_char(map[i][j])
-																	 && is_invalid_space(map, i, j, height))))
+			if (j >= ft_strlen(map[i]))
+			{
+				if (is_border(i, j, height, max_len) && map[i][j] != '1')
+					return (0);
+			}
+			else if (!ft_isspace(map[i][j]) && ((is_border(i, j, height,
+							max_len) && map[i][j] != '1')
+					|| (is_allowed_char(map[i][j]) && is_invalid_space(map, i,
+							j, height))))
 				return (0);
 		}
 	}
 	return (1);
 }
 
-
-int forbidden_char(char **map)
+int	forbidden_char(char **map)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
-	i = 0;
-	while(map[++i])
+	i = -1;
+	while (map[++i])
 	{
-		j = 0;
-		while(map[i][++j])
+		j = -1;
+		while (map[i][++j])
 		{
-			if(!is_allowed_char(map[i][j]) && map[i][j] != '1')
-				return(0);
+			if (!is_allowed_char(map[i][j]) && map[i][j] != '1'
+				&& !ft_isspace(map[i][j]))
+				return (0);
 		}
 	}
-	return(1);
+	return (1);
 }
 
-int check_start_pos(char **map)
+int	check_start_pos(char **map)
 {
-	int i;
-	int j;
-	int start_pos;
+	int	i;
+	int	j;
+	int	start_pos;
 
 	start_pos = 0;
-	i = 0;
-	while(map[i])
+	i = -1;
+	while (map[++i])
 	{
-		j = 0;
-		while(map[i][j])
+		j = -1;
+		while (map[i][++j])
 		{
-			if(map[i][j] == 'N' || map[i][j] == 'S' || map[i][j] == 'W' || map[i][j] == 'E')
+			if (map[i][j] == 'N' || map[i][j] == 'S' || map[i][j] == 'W'
+				|| map[i][j] == 'E')
 				start_pos++;
-			j++;
 		}
-		i++;
 	}
-	return(start_pos == 1);
-}
-
-void check_map_valid(t_all **all)
-{
-	if(!(*all)->map)
-		ft_all_exit(*all, "Map isn't valid");
-	if(!forbidden_char((*all)->map))
-		ft_all_exit(*all, "wrong char in map");
-	if(!is_map_closed((*all)->map))
-		ft_all_exit(*all, "Map isn't closed");
-	if(!check_start_pos((*all)->map))
-		ft_all_exit(*all, "Start position isn't valid");
+	return (start_pos == 1);
 }

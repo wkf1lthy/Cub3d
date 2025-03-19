@@ -114,14 +114,3 @@ void	ray_cast(void *param)
 	}
 	draw_minimap(all);
 }
-
-void	escape(void *param)
-{
-	t_all	*all;
-
-	all = (t_all *)param;
-	if (mlx_is_key_down(all->mlx, MLX_KEY_ESCAPE))
-	{
-		mlx_close_window(all->mlx);
-	}
-}

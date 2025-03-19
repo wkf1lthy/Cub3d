@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_color.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hbouchel <hbouchel@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/19 18:36:52 by hbouchel          #+#    #+#             */
+/*   Updated: 2025/03/19 18:39:52 by hbouchel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/cub3d.h"
 
 void	update_color(t_all **all, char *color, char id)
@@ -23,41 +35,37 @@ void	update_color(t_all **all, char *color, char id)
 		| (g << 16) | (b << 8) | 255);
 }
 
-int valid_number(char *str)
+int	valid_number(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	if(!str)
-		return 0;
-	while(str[i])
+	if (!str)
+		return (0);
+	while (str[i])
 	{
-		if(str[i] < '0' || str[i] > '9')
-			return 0;
+		if (str[i] < '0' || str[i] > '9')
+			return (0);
 		i++;
 	}
-	return 1;
+	return (1);
 }
 
-int setting_color(char *line)
+int	setting_color(char *line)
 {
-	int i;
-	int flag;
+	int	i;
+	int	flag;
 
 	i = 0;
 	flag = 0;
-	while(line[i] && line[i] != '\n')
+	while (line[i] && line[i] != '\n')
 	{
-		while(line[i] && line[i] == ' ')
+		while (line[i] && line[i] == ' ')
 			i++;
 		if (!ft_isdigit(line[i]) && line[i] != ' ')
-		{
 			return (0);
-		}
 		if (ft_atoi(&line[i]) > 255 && line[i] != ' ')
-		{
 			return (0);
-		}
 		while (ft_isdigit(line[i]) || line[i] == ' ')
 			i++;
 		if (line[i] != ',' && flag < 2)
@@ -66,34 +74,34 @@ int setting_color(char *line)
 			flag++;
 		i++;
 	}
-	return(1);
+	return (1);
 }
 
-void is_valid_color(t_all **all, char *line)
+void	is_valid_color(t_all **all, char *line)
 {
-	int i;
-	int j;
-	int k;
-	char *id[3];
+	int		i;
+	int		j;
+	int		k;
+	char	*id[3];
 
 	id[0] = "F ";
 	id[1] = "C ";
 	i = -1;
-	while(++i < 2)
+	while (++i < 2)
 	{
 		j = -1;
 		k = -1;
-		while(line[++k] && line[k] == ' ')
-			continue;
-		while(id[i][++j] && line && j < 2)
-			if(id[i][j] != line[k++])
+		while (line[++k] && line[k] == ' ')
+			continue ;
+		while (id[i][++j] && line && j < 2)
+			if (id[i][j] != line[k++])
 				break ;
-		if(j == 2)
+		if (j == 2)
 			break ;
 	}
-	if(i == 2)
+	if (i == 2)
 		ft_all_exit(*all, "color invalid");
-	if(!setting_color(&line[k]))
+	if (!setting_color(&line[k]))
 		ft_all_exit(*all, "Infos color isn't valid");
 	update_count(all, id[i]);
 }

@@ -1,26 +1,39 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing_utils.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hbouchel <hbouchel@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/19 18:40:42 by hbouchel          #+#    #+#             */
+/*   Updated: 2025/03/19 18:40:43 by hbouchel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/cub3d.h"
 
-int is_allowed_char(char c)
+int	is_allowed_char(char c)
 {
-	if(c == ' ' || c == '0' || c == 'N' || c == 'E' || c == 'S' || c == 'W' || c == 'D')
+	if (c == ' ' || c == '0' || c == 'N' || c == 'E' || c == 'S' || c == 'W'
+		|| c == 'D')
 		return (1);
 	return (0);
 }
 
-char  **add_line(char **map, char *line)
+char	**add_line(char **map, char *line)
 {
-	char **new_map;
-	int size;
-	int i;
+	char	**new_map;
+	int		size;
+	int		i;
 
 	size = 0;
-	while(map && map[size])
+	while (map && map[size])
 		size++;
 	new_map = ft_calloc(size + 2, sizeof(char *));
-	if(!new_map)
+	if (!new_map)
 		return (NULL);
 	i = -1;
-	while(++i < size)
+	while (++i < size)
 		new_map[i] = ft_strdup(map[i]);
 	new_map[i++] = ft_strdup(line);
 	new_map[i] = NULL;
@@ -82,14 +95,14 @@ void	init_ptr(t_all **all)
 		(*all)->tab_textures[i] = NULL;
 }
 
-int check_format(char *str, char *cmp)
+int	check_format(char *str, char *cmp)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while(str[i] && ft_strcmp(&str[i], cmp) != 0)
+	while (str[i] && ft_strcmp(&str[i], cmp) != 0)
 		i++;
-	if(ft_strcmp(&str[i], cmp) == 0)
+	if (ft_strcmp(&str[i], cmp) == 0)
 		return (0);
 	return (1);
 }

@@ -27,7 +27,8 @@ void	move_backward(t_all *all)
 	int		map_x;
 	int		map_y;
 
-	next_x = all->player_pos.x - cos(all->player_angle) * MOV_SPEED;next_y = all->player_pos.y - sin(all->player_angle) * MOV_SPEED;
+	next_x = all->player_pos.x - cos(all->player_angle) * MOV_SPEED;
+	next_y = all->player_pos.y - sin(all->player_angle) * MOV_SPEED;
 	map_x = (int)((next_x - 5 * cos(all->player_angle)) / TILE_SIZE);
 	map_y = (int)((next_y - 5 * sin(all->player_angle)) / TILE_SIZE);
 	if (all->map[map_y][(int)(all->player_pos.x / TILE_SIZE)] == '0')
@@ -70,9 +71,11 @@ void	move_right(t_all *all)
 		all->player_pos.x = next_x;
 }
 
-void choice_move(void *param)
+void	choice_move(void *param)
 {
-	t_all *all = (t_all *)param;
+	t_all	*all;
+
+	all = (t_all *)param;
 	if (mlx_is_key_down(all->mlx, MLX_KEY_A))
 		move_right(all);
 	if (mlx_is_key_down(all->mlx, MLX_KEY_W))

@@ -179,7 +179,8 @@ void				check_wall_face(t_raycast *raycast);
 void				calcul_tex(t_all *all, t_raycast *ray, int y);
 void				calculate_color(mlx_texture_t **texture_tab,
 						t_raycast *raycast);
-
+int					mapping(char **map, size_t max_len, int height);
+int					check_start_pos(char **map);
 int					main(int ac, char **av);
 
 #endif
