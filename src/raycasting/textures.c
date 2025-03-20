@@ -5,16 +5,16 @@ void	check_wall_face(t_raycast *raycast)
 	if (raycast->dda.side == 0)
 	{
 		if (raycast->dda.ray_dir.x < 0)
-			raycast->wall_face = 0;
+			raycast->wall_face = 2;
 		else
-			raycast->wall_face = 1;
+			raycast->wall_face = 3;
 	}
 	else
 	{
 		if (raycast->dda.ray_dir.y < 0)
-			raycast->wall_face = 2;
+			raycast->wall_face = 0;
 		else
-			raycast->wall_face = 3;
+			raycast->wall_face = 1;
 	}
 }
 
