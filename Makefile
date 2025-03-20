@@ -23,7 +23,7 @@ PLAYER_DIR = player/
 PLAYER = move move_fov door
 
 
-SRC_FILES  += utils main
+SRC_FILES  += utils main utils_lib
 SRC_FILES  += $(addprefix $(PARSING_DIR), $(PARSING))
 SRC_FILES  += $(addprefix $(RENDER_DIR), $(RENDER))
 SRC_FILES  += $(addprefix $(PLAYER_DIR), $(PLAYER))

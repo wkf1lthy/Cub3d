@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   move.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hbouchel <hbouchel@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/20 18:56:39 by hbouchel          #+#    #+#             */
+/*   Updated: 2025/03/20 18:56:41 by hbouchel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/cub3d.h"
 
 #define MOV_SPEED 5
@@ -14,9 +26,11 @@ void	move_forward(t_all *all)
 	next_y = all->player_pos.y + sin(all->player_angle) * MOV_SPEED;
 	map_x = (int)((next_x + 5 * cos(all->player_angle)) / TILE_SIZE);
 	map_y = (int)((next_y + 5 * sin(all->player_angle)) / TILE_SIZE);
-	if (all->map[map_y][(int)(all->player_pos.x / TILE_SIZE)] == '0' || all->map[map_y][(int)(all->player_pos.x / TILE_SIZE)] == '6')
+	if (all->map[map_y][(int)(all->player_pos.x / TILE_SIZE)] == '0'
+		|| all->map[map_y][(int)(all->player_pos.x / TILE_SIZE)] == '6')
 		all->player_pos.y = next_y;
-	if (all->map[(int)(all->player_pos.y / TILE_SIZE)][map_x] == '0' || all->map[(int)(all->player_pos.y / TILE_SIZE)][map_x] == '6')
+	if (all->map[(int)(all->player_pos.y / TILE_SIZE)][map_x] == '0'
+		|| all->map[(int)(all->player_pos.y / TILE_SIZE)][map_x] == '6')
 		all->player_pos.x = next_x;
 }
 
@@ -31,9 +45,11 @@ void	move_backward(t_all *all)
 	next_y = all->player_pos.y - sin(all->player_angle) * MOV_SPEED;
 	map_x = (int)((next_x - 5 * cos(all->player_angle)) / TILE_SIZE);
 	map_y = (int)((next_y - 5 * sin(all->player_angle)) / TILE_SIZE);
-	if (all->map[map_y][(int)(all->player_pos.x / TILE_SIZE)] == '0' || all->map[map_y][(int)(all->player_pos.x / TILE_SIZE)] == '6')
+	if (all->map[map_y][(int)(all->player_pos.x / TILE_SIZE)] == '0'
+		|| all->map[map_y][(int)(all->player_pos.x / TILE_SIZE)] == '6')
 		all->player_pos.y = next_y;
-	if (all->map[(int)(all->player_pos.y / TILE_SIZE)][map_x] == '0' || all->map[(int)(all->player_pos.y / TILE_SIZE)][map_x] == '6')
+	if (all->map[(int)(all->player_pos.y / TILE_SIZE)][map_x] == '0'
+		|| all->map[(int)(all->player_pos.y / TILE_SIZE)][map_x] == '6')
 		all->player_pos.x = next_x;
 }
 
@@ -48,9 +64,11 @@ void	move_left(t_all *all)
 	next_y = all->player_pos.y + cos(all->player_angle) * MOV_SPEED;
 	map_x = (int)((next_x - 5 * sin(all->player_angle)) / TILE_SIZE);
 	map_y = (int)((next_y + 5 * cos(all->player_angle)) / TILE_SIZE);
-	if (all->map[map_y][(int)(all->player_pos.x / TILE_SIZE)] == '0' || all->map[map_y][(int)(all->player_pos.x / TILE_SIZE)] == '6')
+	if (all->map[map_y][(int)(all->player_pos.x / TILE_SIZE)] == '0'
+		|| all->map[map_y][(int)(all->player_pos.x / TILE_SIZE)] == '6')
 		all->player_pos.y = next_y;
-	if (all->map[(int)(all->player_pos.y / TILE_SIZE)][map_x] == '0' || all->map[(int)(all->player_pos.y / TILE_SIZE)][map_x] == '6')
+	if (all->map[(int)(all->player_pos.y / TILE_SIZE)][map_x] == '0'
+		|| all->map[(int)(all->player_pos.y / TILE_SIZE)][map_x] == '6')
 		all->player_pos.x = next_x;
 }
 
@@ -65,9 +83,11 @@ void	move_right(t_all *all)
 	next_y = all->player_pos.y - cos(all->player_angle) * MOV_SPEED;
 	map_x = (int)((next_x + 5 * sin(all->player_angle)) / TILE_SIZE);
 	map_y = (int)((next_y - 5 * cos(all->player_angle)) / TILE_SIZE);
-	if (all->map[map_y][(int)(all->player_pos.x / TILE_SIZE)] == '0' || all->map[map_y][(int)(all->player_pos.x / TILE_SIZE)] == '6')
+	if (all->map[map_y][(int)(all->player_pos.x / TILE_SIZE)] == '0'
+		|| all->map[map_y][(int)(all->player_pos.x / TILE_SIZE)] == '6')
 		all->player_pos.y = next_y;
-	if (all->map[(int)(all->player_pos.y / TILE_SIZE)][map_x] == '0' || all->map[(int)(all->player_pos.y / TILE_SIZE)][map_x] == '6')
+	if (all->map[(int)(all->player_pos.y / TILE_SIZE)][map_x] == '0'
+		|| all->map[(int)(all->player_pos.y / TILE_SIZE)][map_x] == '6')
 		all->player_pos.x = next_x;
 }
 

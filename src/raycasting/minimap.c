@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minimap.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hbouchel <hbouchel@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/20 19:07:47 by hbouchel          #+#    #+#             */
+/*   Updated: 2025/03/20 19:07:48 by hbouchel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/cub3d.h"
 
 uint32_t	choose_color(char c)
@@ -5,14 +17,14 @@ uint32_t	choose_color(char c)
 	if (c == '0')
 		return (0x000000FF);
 	else if (c == '1')
-		return 0xFFFFFFFF;
-    else if (c == 'D')
-        return 0x1500FFFF;
-    else if (c == '6')
-    {
-        return 0x5AAAFFFF;
-    }
-	return 0;
+		return (0xFFFFFFFF);
+	else if (c == 'D')
+		return (0x1500FFFF);
+	else if (c == '6')
+	{
+		return (0x5AAAFFFF);
+	}
+	return (0);
 }
 
 void	player_on_minimap(t_all *all)

@@ -86,14 +86,14 @@ void	dda(t_all *all, t_raycast *ray, double ray_angle)
 		}
 	}
 	check_wall_face(ray);
-    if (all->map[ray->dda.map.y][ray->dda.map.x] == 'D')
-    {
-        ray->wall_face = 4;
-    }
+	if (all->map[ray->dda.map.y][ray->dda.map.x] == 'D')
+	{
+		ray->wall_face = 4;
+	}
 	if (ray->dda.side == 0)
-    {
+	{
 		ray->perp_wall_dist = (ray->dda.side_dist.x - ray->dda.delta_dist.x);
-    }
+	}
 	else
 		ray->perp_wall_dist = (ray->dda.side_dist.y - ray->dda.delta_dist.y);
 }

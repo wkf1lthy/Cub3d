@@ -6,7 +6,7 @@
 /*   By: hbouchel <hbouchel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 18:34:36 by hbouchel          #+#    #+#             */
-/*   Updated: 2025/03/20 18:50:43 by hbouchel         ###   ########.fr       */
+/*   Updated: 2025/03/20 18:54:33 by hbouchel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,12 @@ int	ft_isspace(char c)
 	return (0);
 }
 
-int is_closed_around(char **map, int i, int j, int height)
+int	is_closed_around(char **map, int i, int j, int height)
 {
-    if (map[i][j] == '0' && ((i > 0 && j > (int)ft_strlen(map[i - 1])) || (i < height && j > (int)ft_strlen(map[i + 1]))))
-        return 1;
-    return 0;
+	if (map[i][j] == '0' && ((i > 0 && j > (int)ft_strlen(map[i - 1]))
+			|| (i < height && j > (int)ft_strlen(map[i + 1]))))
+		return (1);
+	return (0);
 }
 
 int	is_map_closed(char **map)
@@ -45,8 +46,9 @@ int	is_map_closed(char **map)
 		while (++j < len)
 		{
 			if (!ft_isspace(map[i][j]) && ((is_border(i, j, height, len)
-											&& map[i][j] != '1') || (is_allowed_char(map[i][j])
-																	 && is_invalid_space(map, i, j, height)) || is_closed_around(map, i, j, height)))
+						&& map[i][j] != '1') || (is_allowed_char(map[i][j])
+						&& is_invalid_space(map, i, j, height))
+					|| is_closed_around(map, i, j, height)))
 				return (0);
 		}
 	}

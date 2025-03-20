@@ -6,7 +6,7 @@
 /*   By: hbouchel <hbouchel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 18:40:22 by hbouchel          #+#    #+#             */
-/*   Updated: 2025/03/19 18:40:24 by hbouchel         ###   ########.fr       */
+/*   Updated: 2025/03/20 18:55:04 by hbouchel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,8 +102,8 @@ int	get_line(char *line)
 		return (2);
 	else if (line[i] == 'E')
 		return (3);
-    else if (line[i] == 'D')
-        return (4);
+	else if (line[i] == 'D')
+		return (4);
 	else
 		return (5);
 }

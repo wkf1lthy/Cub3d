@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   move_fov.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hbouchel <hbouchel@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/20 18:56:54 by hbouchel          #+#    #+#             */
+/*   Updated: 2025/03/20 18:56:58 by hbouchel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/cub3d.h"
 
 void	cursor_move(double x_pos, double y_pos, void *param)
@@ -15,17 +27,19 @@ void	cursor_move(double x_pos, double y_pos, void *param)
 	all->last_cursor_x = x_pos;
 }
 
-void toggle(mlx_key_data_t keydata, void *param)
+void	toggle(mlx_key_data_t keydata, void *param)
 {
-    t_all *all;
-    all = (t_all *)param;
-	int y = 0;
+	t_all	*all;
+	int		y;
 
-    if (keydata.key == MLX_KEY_K && keydata.action == MLX_RELEASE)
-    {
-        toggle_door(all);
-    }
-    if (!all->fov_mouse && keydata.action == MLX_RELEASE && keydata.key == MLX_KEY_F)
+	all = (t_all *)param;
+	y = 0;
+	if (keydata.key == MLX_KEY_K && keydata.action == MLX_RELEASE)
+	{
+		toggle_door(all);
+	}
+	if (!all->fov_mouse && keydata.action == MLX_RELEASE
+		&& keydata.key == MLX_KEY_F)
 	{
 		mlx_set_cursor_mode(all->mlx, MLX_MOUSE_DISABLED);
 		all->fov_mouse = 1;

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hbouchel <hbouchel@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/20 19:11:53 by hbouchel          #+#    #+#             */
+/*   Updated: 2025/03/20 19:12:58 by hbouchel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CUB3D_H
 # define CUB3D_H
 
@@ -13,7 +25,6 @@
 # include <sys/types.h>
 # include <unistd.h>
 
-# define NULL ((void *)0)
 # define NB_TEXT 5
 # define TILE_SIZE 64
 # define WIDTH 1000
@@ -161,8 +172,6 @@ void				move_backward(t_all *all);
 void				move_left(t_all *all);
 void				move_right(t_all *all);
 void				choice_move(void *param);
-void				rotate_right(t_all *all);
-void				rotate_left(t_all *all);
 void				fov_mooves(void *param);
 void				toggle(mlx_key_data_t keydata, void *param);
 void				toggle_door(t_all *all);
@@ -180,7 +189,6 @@ void				check_wall_face(t_raycast *raycast);
 void				calcul_tex(t_all *all, t_raycast *ray, int y);
 void				calculate_color(mlx_texture_t **texture_tab,
 						t_raycast *raycast);
-int					mapping(char **map, size_t max_len, int height);
 int					check_start_pos(char **map);
 int					main(int ac, char **av);
 
