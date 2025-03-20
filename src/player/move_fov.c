@@ -15,12 +15,16 @@ void	cursor_move(double x_pos, double y_pos, void *param)
 	all->last_cursor_x = x_pos;
 }
 
-void toggle_cursor(mlx_key_data_t keydata, void *param)
+void toggle(mlx_key_data_t keydata, void *param)
 {
     t_all *all;
     all = (t_all *)param;
 	int y = 0;
 
+    if (keydata.key == MLX_KEY_K && keydata.action == MLX_RELEASE)
+    {
+        toggle_door(all);
+    }
     if (!all->fov_mouse && keydata.action == MLX_RELEASE && keydata.key == MLX_KEY_F)
 	{
 		mlx_set_cursor_mode(all->mlx, MLX_MOUSE_DISABLED);

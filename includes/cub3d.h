@@ -164,8 +164,8 @@ void				choice_move(void *param);
 void				rotate_right(t_all *all);
 void				rotate_left(t_all *all);
 void				fov_mooves(void *param);
-void				toggle_cursor(mlx_key_data_t keydata, void *param);
-void				toggle_door(mlx_key_data_t keydata, void *param);
+void				toggle(mlx_key_data_t keydata, void *param);
+void				toggle_door(t_all *all);
 
 uint32_t			choose_color(char c);
 void				player_on_minimap(t_all *all);
