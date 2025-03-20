@@ -6,6 +6,12 @@ uint32_t choose_color(char c)
 		return 0x000000FF;
 	else if (c == '1')
 		return 0xFFFFFFFF;
+    else if (c == 'D')
+        return 0x1500FFFF;
+    else if (c == '6')
+    {
+        return 0x5AAAFFFF;
+    }
 	return 0;
 }
 
