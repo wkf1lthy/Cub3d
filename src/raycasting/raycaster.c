@@ -91,7 +91,9 @@ void	dda(t_all *all, t_raycast *ray, double ray_angle)
         ray->wall_face = 4;
     }
 	if (ray->dda.side == 0)
+    {
 		ray->perp_wall_dist = (ray->dda.side_dist.x - ray->dda.delta_dist.x);
+    }
 	else
 		ray->perp_wall_dist = (ray->dda.side_dist.y - ray->dda.delta_dist.y);
 }
