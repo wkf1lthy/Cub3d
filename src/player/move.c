@@ -14,9 +14,9 @@ void	move_forward(t_all *all)
 	next_y = all->player_pos.y + sin(all->player_angle) * MOV_SPEED;
 	map_x = (int)((next_x + 5 * cos(all->player_angle)) / TILE_SIZE);
 	map_y = (int)((next_y + 5 * sin(all->player_angle)) / TILE_SIZE);
-	if (all->map[map_y][(int)(all->player_pos.x / TILE_SIZE)] == '0')
+	if (all->map[map_y][(int)(all->player_pos.x / TILE_SIZE)] == '0' || all->map[map_y][(int)(all->player_pos.x / TILE_SIZE)] == '6')
 		all->player_pos.y = next_y;
-	if (all->map[(int)(all->player_pos.y / TILE_SIZE)][map_x] == '0')
+	if (all->map[(int)(all->player_pos.y / TILE_SIZE)][map_x] == '0' || all->map[(int)(all->player_pos.y / TILE_SIZE)][map_x] == '6')
 		all->player_pos.x = next_x;
 }
 
@@ -31,9 +31,9 @@ void	move_backward(t_all *all)
 	next_y = all->player_pos.y - sin(all->player_angle) * MOV_SPEED;
 	map_x = (int)((next_x - 5 * cos(all->player_angle)) / TILE_SIZE);
 	map_y = (int)((next_y - 5 * sin(all->player_angle)) / TILE_SIZE);
-	if (all->map[map_y][(int)(all->player_pos.x / TILE_SIZE)] == '0')
+	if (all->map[map_y][(int)(all->player_pos.x / TILE_SIZE)] == '0' || all->map[map_y][(int)(all->player_pos.x / TILE_SIZE)] == '6')
 		all->player_pos.y = next_y;
-	if (all->map[(int)(all->player_pos.y / TILE_SIZE)][map_x] == '0')
+	if (all->map[(int)(all->player_pos.y / TILE_SIZE)][map_x] == '0' || all->map[(int)(all->player_pos.y / TILE_SIZE)][map_x] == '6')
 		all->player_pos.x = next_x;
 }
 
@@ -48,9 +48,9 @@ void	move_left(t_all *all)
 	next_y = all->player_pos.y + cos(all->player_angle) * MOV_SPEED;
 	map_x = (int)((next_x - 5 * sin(all->player_angle)) / TILE_SIZE);
 	map_y = (int)((next_y + 5 * cos(all->player_angle)) / TILE_SIZE);
-	if (all->map[map_y][(int)(all->player_pos.x / TILE_SIZE)] == '0')
+	if (all->map[map_y][(int)(all->player_pos.x / TILE_SIZE)] == '0' || all->map[map_y][(int)(all->player_pos.x / TILE_SIZE)] == '6')
 		all->player_pos.y = next_y;
-	if (all->map[(int)(all->player_pos.y / TILE_SIZE)][map_x] == '0')
+	if (all->map[(int)(all->player_pos.y / TILE_SIZE)][map_x] == '0' || all->map[(int)(all->player_pos.y / TILE_SIZE)][map_x] == '6')
 		all->player_pos.x = next_x;
 }
 
@@ -65,9 +65,9 @@ void	move_right(t_all *all)
 	next_y = all->player_pos.y - cos(all->player_angle) * MOV_SPEED;
 	map_x = (int)((next_x + 5 * sin(all->player_angle)) / TILE_SIZE);
 	map_y = (int)((next_y - 5 * cos(all->player_angle)) / TILE_SIZE);
-	if (all->map[map_y][(int)(all->player_pos.x / TILE_SIZE)] == '0')
+	if (all->map[map_y][(int)(all->player_pos.x / TILE_SIZE)] == '0' || all->map[map_y][(int)(all->player_pos.x / TILE_SIZE)] == '6')
 		all->player_pos.y = next_y;
-	if (all->map[(int)(all->player_pos.y / TILE_SIZE)][map_x] == '0')
+	if (all->map[(int)(all->player_pos.y / TILE_SIZE)][map_x] == '0' || all->map[(int)(all->player_pos.y / TILE_SIZE)][map_x] == '6')
 		all->player_pos.x = next_x;
 }
 
