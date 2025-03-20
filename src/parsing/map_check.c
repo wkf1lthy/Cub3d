@@ -6,7 +6,7 @@
 /*   By: hbouchel <hbouchel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 18:34:36 by hbouchel          #+#    #+#             */
-/*   Updated: 2025/03/20 17:34:42 by hbouchel         ###   ########.fr       */
+/*   Updated: 2025/03/20 18:50:43 by hbouchel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,49 +19,34 @@ int	ft_isspace(char c)
 	return (0);
 }
 
+int is_closed_around(char **map, int i, int j, int height)
+{
+    if (map[i][j] == '0' && ((i > 0 && j > (int)ft_strlen(map[i - 1])) || (i < height && j > (int)ft_strlen(map[i + 1]))))
+        return 1;
+    return 0;
+}
+
 int	is_map_closed(char **map)
 {
-	int		i;
-	int		height;
-	size_t	max_len;
-	size_t	len;
+	int	i;
+	int	j;
+	int	height;
+	int	len;
 
 	i = 0;
 	while (map[i])
 		i++;
 	height = i;
-	max_len = 0;
-	i = 0;
-	while (i < height)
-	{
-		len = ft_strlen(map[i]);
-		if (len > max_len)
-			max_len = len;
-		i++;
-	}
-	return (mapping(map, max_len, height));
-}
-
-int	mapping(char **map, size_t max_len, int height)
-{
-	int		i;
-	size_t	j;
-
-	i = 0;
+	i = -1;
 	while (++i < height)
 	{
-		j = 0;
-		while (++j < max_len)
+		len = ft_strlen(map[i]);
+		j = -1;
+		while (++j < len)
 		{
-			if (j >= ft_strlen(map[i]))
-			{
-				if (is_border(i, j, height, max_len) && map[i][j] != '1')
-					return (0);
-			}
-			else if (!ft_isspace(map[i][j]) && ((is_border(i, j, height,
-							max_len) && map[i][j] != '1' && map[i][j] != 'D')
-					|| (is_allowed_char(map[i][j]) && is_invalid_space(map, i,
-							j, height))))
+			if (!ft_isspace(map[i][j]) && ((is_border(i, j, height, len)
+											&& map[i][j] != '1') || (is_allowed_char(map[i][j])
+																	 && is_invalid_space(map, i, j, height)) || is_closed_around(map, i, j, height)))
 				return (0);
 		}
 	}
