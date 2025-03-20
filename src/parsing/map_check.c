@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vabaud <vabaud@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hbouchel <hbouchel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 18:34:36 by hbouchel          #+#    #+#             */
-/*   Updated: 2025/03/20 16:52:51 by vabaud           ###   ########.fr       */
+/*   Updated: 2025/03/20 17:34:42 by hbouchel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	mapping(char **map, size_t max_len, int height)
 					return (0);
 			}
 			else if (!ft_isspace(map[i][j]) && ((is_border(i, j, height,
-							max_len) && map[i][j] != '1')
+							max_len) && map[i][j] != '1' && map[i][j] != 'D')
 					|| (is_allowed_char(map[i][j]) && is_invalid_space(map, i,
 							j, height))))
 				return (0);
