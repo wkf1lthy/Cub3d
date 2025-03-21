@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbouchel <hbouchel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vabaud <vabaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 19:11:53 by hbouchel          #+#    #+#             */
-/*   Updated: 2025/03/20 19:12:58 by hbouchel         ###   ########.fr       */
+/*   Updated: 2025/03/21 13:47:00 by vabaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 # define TILE_SIZE 64
 # define WIDTH 1000
 # define HEIGHT 800
-# define FOV (66 * (M_PI / 180))
+# define FOV 66
 
 typedef struct s_coord
 {

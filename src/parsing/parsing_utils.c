@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbouchel <hbouchel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vabaud <vabaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 18:40:42 by hbouchel          #+#    #+#             */
-/*   Updated: 2025/03/19 18:40:43 by hbouchel         ###   ########.fr       */
+/*   Updated: 2025/03/21 13:57:57 by vabaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ void	init_ptr(t_all **all)
 	(*all)->color_c = 0;
 	(*all)->color_f = 0;
 	(*all)->wall_img = NULL;
+	(*all)->fov = FOV * (M_PI / 180);
 	i = -1;
 	while (++i < NB_TEXT)
 		(*all)->tab_textures[i] = NULL;

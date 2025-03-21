@@ -1,25 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   raycaster.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vabaud <vabaud@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/21 13:26:56 by vabaud            #+#    #+#             */
+/*   Updated: 2025/03/21 13:58:39 by vabaud           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/cub3d.h"
 
-void	refresh_image(mlx_t *mlx, mlx_image_t **image)
+void	init_side_dist(t_all *all, t_raycast *ray)
 {
-	if (!*image)
-	{
-		*image = mlx_new_image(mlx, WIDTH, HEIGHT);
-		mlx_image_to_window(mlx, *image, 0, 0);
-	}
-	else
-		ft_bzero((*image)->pixels, WIDTH * HEIGHT * 4);
-}
-
-void	init_ray(t_all *all, t_raycast *ray, double ray_angle)
-{
-	ray->dda.ray_dir.x = cos(ray_angle);
-	ray->dda.ray_dir.y = sin(ray_angle);
-	ray->dda.map.x = all->player_pos.x / TILE_SIZE;
-	ray->dda.map.y = all->player_pos.y / TILE_SIZE;
-	ray->dda.delta_dist.x = fabs(TILE_SIZE / ray->dda.ray_dir.x);
-	ray->dda.delta_dist.y = fabs(TILE_SIZE / ray->dda.ray_dir.y);
-	ray->dda.side = 0;
 	if (ray->dda.ray_dir.x < 0)
 	{
 		ray->dda.side_dist.x = ((all->player_pos.x - (ray->dda.map.x
@@ -44,6 +38,18 @@ void	init_ray(t_all *all, t_raycast *ray, double ray_angle)
 				- all->player_pos.y) / fabs(ray->dda.ray_dir.y);
 		ray->step_y = 1;
 	}
+}
+
+void	init_ray(t_all *all, t_raycast *ray, double ray_angle)
+{
+	ray->dda.ray_dir.x = cos(ray_angle);
+	ray->dda.ray_dir.y = sin(ray_angle);
+	ray->dda.map.x = all->player_pos.x / TILE_SIZE;
+	ray->dda.map.y = all->player_pos.y / TILE_SIZE;
+	ray->dda.delta_dist.x = fabs(TILE_SIZE / ray->dda.ray_dir.x);
+	ray->dda.delta_dist.y = fabs(TILE_SIZE / ray->dda.ray_dir.y);
+	ray->dda.side = 0;
+	init_side_dist(all, ray);
 }
 
 void	draw_wall(t_all *all, t_raycast *ray, int x)
@@ -85,11 +91,8 @@ void	dda(t_all *all, t_raycast *ray, double ray_angle)
 			ray->dda.side = 1;
 		}
 	}
+	ray->wall_face = 4;
 	check_wall_face(ray);
-	if (all->map[ray->dda.map.y][ray->dda.map.x] == 'D')
-	{
-		ray->wall_face = 4;
-	}
 	if (ray->dda.side == 0)
 	{
 		ray->perp_wall_dist = (ray->dda.side_dist.x - ray->dda.delta_dist.x);
@@ -111,7 +114,8 @@ void	ray_cast(void *param)
 	refresh_image(all->mlx, &all->wall_img);
 	while (++x < WIDTH)
 	{
-		ray_angle = all->player_angle - (FOV / 2) + ((FOV * x) / WIDTH);
+		ray_angle = all->player_angle - (all->fov / 2) + ((all->fov * x)
+				/ WIDTH);
 		dda(all, &ray, ray_angle);
 		distance = ray.perp_wall_dist * cos(ray_angle - all->player_angle);
 		ray.wall_height = (int)(TILE_SIZE * HEIGHT / distance);
