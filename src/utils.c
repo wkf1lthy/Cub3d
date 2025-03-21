@@ -6,7 +6,7 @@
 /*   By: hbouchel <hbouchel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 18:57:56 by hbouchel          #+#    #+#             */
-/*   Updated: 2025/03/20 18:59:49 by hbouchel         ###   ########.fr       */
+/*   Updated: 2025/03/21 17:35:41 by hbouchel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	free_all(t_all *all)
 	if (all->map)
 		free_tab(all->map);
 	if (all->infos)
-		free(all->infos);
+		free_tab(all->infos);
 	while (i < NB_TEXT)
 	{
 		if (all->tab_textures[i])
