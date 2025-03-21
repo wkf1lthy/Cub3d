@@ -6,14 +6,11 @@
 /*   By: hbouchel <hbouchel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 18:56:39 by hbouchel          #+#    #+#             */
-/*   Updated: 2025/03/20 18:56:41 by hbouchel         ###   ########.fr       */
+/*   Updated: 2025/03/21 17:01:31 by hbouchel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
-
-#define MOV_SPEED 5
-#define TILE_SIZE 64
 
 void	move_forward(t_all *all)
 {

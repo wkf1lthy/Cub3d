@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vabaud <vabaud@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hbouchel <hbouchel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 19:11:53 by hbouchel          #+#    #+#             */
-/*   Updated: 2025/03/21 13:47:00 by vabaud           ###   ########.fr       */
+/*   Updated: 2025/03/21 17:01:45 by hbouchel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,11 @@
 # include <unistd.h>
 
 # define NB_TEXT 5
-# define TILE_SIZE 64
 # define WIDTH 1000
 # define HEIGHT 800
 # define FOV 66
+# define MOV_SPEED 5
+# define TILE_SIZE 64
 
 typedef struct s_coord
 {
@@ -57,29 +58,13 @@ typedef struct s_dda
 	t_coord			delta_dist;
 	t_coord			step;
 	t_coord_int		map;
-	int				hit;
 	int				side;
 }					t_dda;
 
-typedef struct s_flash_light
-{
-	t_coord			player_dir;
-	double			dst_factor;
-	double			ray_dir_norm;
-	double			player_dir_norm;
-	double			scalar_product;
-	double			angle_factor;
-	double			falloff;
-	double			light_factor;
-}					t_flash_light;
-
 typedef struct s_raycast
 {
-	t_coord			pos_ray;
 	double			distance;
 	int				wall_height;
-	double			fish_eye;
-	double			projected_wall_height;
 	int				y_start;
 	int				y_end;
 	t_coord_int		texture_coord;
@@ -93,14 +78,6 @@ typedef struct s_raycast
 	int				wall_face;
 	t_dda			dda;
 }					t_raycast;
-
-typedef struct s_sprite
-{
-	double			x;
-	double			y;
-	int				texture_id;
-	double			distance;
-}					t_sprite;
 
 typedef struct s_all
 {
@@ -125,11 +102,7 @@ typedef struct s_all
 	int				last_cursor_x;
 	mlx_image_t		*minimap_img;
 	mlx_image_t		*wall_img;
-	bool			minimap_visible;
 	bool			fov_mouse;
-	bool			sprint;
-	bool			night_vision;
-	mlx_image_t		*text_img;
 	t_raycast		*raycast;
 }					t_all;
 
