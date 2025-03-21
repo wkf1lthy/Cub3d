@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vabaud <vabaud@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hbouchel <hbouchel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 13:26:56 by vabaud            #+#    #+#             */
-/*   Updated: 2025/03/21 13:58:39 by vabaud           ###   ########.fr       */
+/*   Updated: 2025/03/21 18:24:08 by hbouchel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,12 +91,11 @@ void	dda(t_all *all, t_raycast *ray, double ray_angle)
 			ray->dda.side = 1;
 		}
 	}
-	ray->wall_face = 4;
 	check_wall_face(ray);
+	if (all->map[ray->dda.map.y][ray->dda.map.x] == 'D')
+		ray->wall_face = 4;
 	if (ray->dda.side == 0)
-	{
 		ray->perp_wall_dist = (ray->dda.side_dist.x - ray->dda.delta_dist.x);
-	}
 	else
 		ray->perp_wall_dist = (ray->dda.side_dist.y - ray->dda.delta_dist.y);
 }
